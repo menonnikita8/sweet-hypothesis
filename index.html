@@ -46,6 +46,7 @@ button { font-family: inherit; cursor: pointer; }
   display: flex; flex-direction: column; align-items: center;
 }
 .logo { height: 9rem; width: auto; }
+@media (min-width: 768px) { .logo { height: 11rem; } }
 .nav {
   display: flex; align-items: center; gap: 3rem;
   margin-top: 0.75rem; padding-bottom: 0.25rem;
@@ -269,11 +270,21 @@ button { font-family: inherit; cursor: pointer; }
 }
 .payment-overlay.active { display: flex; }
 .payment-card {
+  position: relative;
   background: var(--card); border-radius: 1.5rem;
   border: 1px solid rgba(224,213,204,0.6);
   padding: 2rem; max-width: 420px; width: 100%;
   text-align: center; box-shadow: 0 24px 48px rgba(0,0,0,0.12);
 }
+.payment-close {
+  position: absolute; top: 0.75rem; right: 0.75rem;
+  width: 2rem; height: 2rem; border-radius: 9999px;
+  border: none; background: transparent; color: var(--muted);
+  font-size: 1.25rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-family: inherit;
+}
+.payment-close:hover { background: var(--cream); color: var(--fg); }
 .payment-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
 .payment-card p { color: var(--muted); font-size: 0.875rem; margin-bottom: 1.5rem; }
 .payment-card img { width: 14rem; height: 14rem; object-fit: contain; margin: 0 auto 1.5rem; border-radius: 1rem; }
@@ -291,27 +302,29 @@ button { font-family: inherit; cursor: pointer; }
 /* Pack toggle buttons */
 .pack-row {
   display: flex; align-items: center; justify-content: space-between;
-  margin-top: 1.25rem;
+  margin-top: 1.25rem; margin-bottom: 0.5rem;
 }
 .pack-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 .pack-btns {
-  display: flex; align-items: center; gap: 0.375rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.375rem;
 }
 .pack-btn {
-  height: 2.25rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500;
+  display: inline-flex; flex-direction: column; align-items: center;
+  line-height: 1.1; padding: 0.375rem 0.75rem;
+  border-radius: 1rem; font-size: 0.75rem; font-weight: 500;
   border: 1px solid var(--border); background: var(--cream); color: var(--fg);
-  cursor: pointer; transition: 0.2s; font-family: inherit; padding: 0 0.75rem;
+  cursor: pointer; transition: 0.2s; font-family: inherit;
 }
 .pack-btn:hover { background: var(--bg); }
 .pack-btn.on { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
+.pack-btn .pack-price { font-size: 10px; opacity: 0.75; font-variant-numeric: tabular-nums; margin-top: 2px; }
 </style>
 </head>
 <body>
 
-<header class="header">
+<<header class="header">
   <div class="header-inner">
-    <!-- Replace with your hosted logo URL -->
-    <div class="logo" style="font-family:var(--font-display);font-size:2rem;color:var(--berry);font-style:italic;margin-bottom:0.5rem;">Sweet Hypothesis</div>
+    <img class="logo" src="https://056737ee-d979-4d62-80ca-2a93e3309064.lovableproject.com/__l5e/assets-v1/a1eb045c-47ad-40d7-ab77-1daaa4262239/logo.png" alt="Sweet Hypothesis — Artisan Desserts, Curiously Crafted" />
     <nav class="nav">
       <a href="#menu">Menu</a><span>·</span>
       <a href="#order">Order</a><span>·</span>
@@ -334,7 +347,7 @@ button { font-family: inherit; cursor: pointer; }
   </div>
   <div class="hero-img-wrap">
     <div class="hero-deco"></div>
-    <img class="hero-img" src="/__l5e/assets-v1/5b358047-0910-4897-bc6c-47e31d68cc2d/hero-cake.png" alt="Cake topped with whipped cream, pistachio, and rose petals">
+    <img class="hero-img" src="https://056737ee-d979-4d62-80ca-2a93e3309064.lovableproject.com/__l5e/assets-v1/5b358047-0910-4897-bc6c-47e31d68cc2d/hero-cake.png" alt="Cake topped with whipped cream, pistachio, and rose petals">
   </div>
 </section>
 
@@ -402,7 +415,7 @@ button { font-family: inherit; cursor: pointer; }
   </div>
 </section>
 
-<footer class="footer">
+<<footer class="footer">
   © <span id="year"></span> Sweet Hypothesis · Baked with love
 </footer>
 
@@ -411,6 +424,7 @@ button { font-family: inherit; cursor: pointer; }
 <!-- Payment Modal -->
 <div class="payment-overlay" id="paymentOverlay">
   <div class="payment-card">
+    <button type="button" class="payment-close" id="btnClosePay" aria-label="Close">✕</button>
     <p style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--berry);margin-bottom:0.5rem;text-align:center;">Payment</p>
     <h3>Pay with PayPal</h3>
     <p>Scan the QR code below to complete your payment, then send your order.</p>
@@ -420,7 +434,7 @@ button { font-family: inherit; cursor: pointer; }
         <p id="paymentTotal" style="font-family:var(--font-display);font-size:1.875rem;margin:0;font-variant-numeric:tabular-nums;">$0.00</p>
       </div>
     </div>
-    <img src="/__l5e/assets-v1/ca9b4878-4c49-4712-94a3-0ba225f206ef/paypal-qr.png" alt="PayPal QR code">
+    <img src="https://056737ee-d979-4d62-80ca-2a93e3309064.lovableproject.com/__l5e/assets-v1/ca9b4878-4c49-4712-94a3-0ba225f206ef/paypal-qr.png" alt="PayPal QR code">
     <div class="payment-actions">
       <button type="button" class="btn-paid" id="btnPaid">I've paid — send my order</button>
       <button type="button" class="btn-skip" id="btnCancelPay">Cancel</button>
@@ -437,19 +451,19 @@ const MENU = [
     id: 'butter-cookies',
     name: 'Butter Cookies',
     description: 'Buttery, melt-in-your-mouth cookies crafted with simple ingredients and a hint of warmth. The perfect companion for your afternoon chai or coffee ritual.',
-    image: '/__l5e/assets-v1/092773e9-bbf0-4127-9a53-dc6b9b16cd5c/butter-cookies.png',
+    image: 'https://056737ee-d979-4d62-80ca-2a93e3309064.lovableproject.com/__l5e/assets-v1/092773e9-bbf0-4127-9a53-dc6b9b16cd5c/butter-cookies.png',
   },
   {
     id: 'gulab-jamun-cake',
     name: 'Gulab Jamun Cake',
     description: 'A delicate vanilla cake layered with rich gulab jamun flavors, fragrant cardamom, and silky buttercream. Familiar, nostalgic, and elegantly reimagined.',
-    image: '/__l5e/assets-v1/b40f3e5f-7638-4069-8723-14bed525c9d1/gulab-jamun-cake-new.png',
+    image: 'https://056737ee-d979-4d62-80ca-2a93e3309064.lovableproject.com/__l5e/assets-v1/b40f3e5f-7638-4069-8723-14bed525c9d1/gulab-jamun-cake-new.png',
   },
   {
     id: 'chai-cake',
     name: 'Chai Cake',
     description: 'Warm vanilla cake infused with aromatic chai spices and topped with smooth buttercream. Comforting, cozy, and perfectly balanced.',
-    image: '/__l5e/assets-v1/1aa3f66a-ea8b-47cb-a6ec-5284478ac943/chai-cake-v2.png',
+    image: 'https://056737ee-d979-4d62-80ca-2a93e3309064.lovableproject.com/__l5e/assets-v1/1aa3f66a-ea8b-47cb-a6ec-5284478ac943/chai-cake-v2.png',
   },
 ];
 
@@ -491,11 +505,11 @@ function renderMenu() {
     const options = item.id === 'butter-cookies' ? [6, 12] : [1, 4, 6, 12];
     const imgHtml = item.image
       ? `<img src="${item.image}" alt="${item.name}" loading="lazy">`
-      : `<div class="placeholder">${icon('cookie')}<span>Image coming soon</span></div>`;
+      : `<div class="placeholder">${icon('cookie')}<<span>Image coming soon</span></div>`;
     const buttons = options.map(n => {
       const label = n === 12 ? 'Dozen' : `${n}`;
       const on = qty === n ? 'on' : '';
-      return `<button type="button" class="pack-btn ${on}" onclick="setPack('${item.id}', ${n})" aria-label="${label} ${item.name}"><span>${label}</span><span style="font-size:10px;opacity:0.75">${fmt(priceFor(item.id, n))}</span></button>`;
+      return `<button type="button" class="pack-btn ${on}" onclick="setPack('${item.id}', ${n})" aria-label="${label} ${item.name}"><span>${label}</span><span class="pack-price">${fmt(priceFor(item.id, n))}</span></button>`;
     }).join('');
     const selectedPrice = qty > 0 ? `<span style="font-size:0.875rem;font-weight:500;color:var(--berry);font-variant-numeric:tabular-nums">${fmt(priceFor(item.id, qty))}</span>` : '';
     return `
@@ -639,6 +653,7 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
 
 document.getElementById('btnPaid').addEventListener('click', sendOrder);
 document.getElementById('btnCancelPay').addEventListener('click', closePayment);
+document.getElementById('btnClosePay').addEventListener('click', closePayment);
 document.getElementById('paymentOverlay').addEventListener('click', (e) => {
   if (e.target === document.getElementById('paymentOverlay')) closePayment();
 });
