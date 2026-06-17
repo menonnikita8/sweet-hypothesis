@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sweet Hypothesis — Homemade Desserts, Baked With Love</title>
-<meta name="description" content="Sweet Hypothesis is a homemade bakery offering gulab jamun cake, chai cake, and butter cookies. Order fresh today.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300..700&display=swap" rel="stylesheet">
@@ -35,6 +34,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; }
 
+/* Header */
 .header {
   position: sticky; top: 0; z-index: 30;
   background: var(--bg);
@@ -57,6 +57,7 @@ button { font-family: inherit; cursor: pointer; }
 .nav a:hover { color: var(--fg); }
 .nav span { color: var(--border); font-size: 0.75rem; }
 
+/* Hero */
 .hero {
   max-width: 72rem; margin: 0 auto; padding: 5rem 1.5rem 6rem;
   display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center;
@@ -69,7 +70,9 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em;
   color: var(--berry); margin-bottom: 1.5rem;
 }
-.hero h1 { font-size: 3.5rem; line-height: 1.02; }
+.hero h1 {
+  font-size: 3.5rem; line-height: 1.02;
+}
 @media (min-width: 768px) { .hero h1 { font-size: 4.5rem; } }
 .hero h1 span { font-style: italic; font-weight: 400; color: var(--berry); }
 .hero-btns { display: flex; gap: 0.75rem; margin-top: 2rem; }
@@ -82,7 +85,9 @@ button { font-family: inherit; cursor: pointer; }
   box-shadow: 0 8px 24px rgba(107,79,63,0.15);
 }
 .btn-primary:hover { opacity: 0.9; }
-.btn-outline { border: 1px solid var(--border); color: var(--fg); }
+.btn-outline {
+  border: 1px solid var(--border); color: var(--fg);
+}
 .btn-outline:hover { background: var(--cream); }
 
 .hero-img-wrap { position: relative; }
@@ -95,6 +100,7 @@ button { font-family: inherit; cursor: pointer; }
   border-radius: 2rem; object-fit: cover; box-shadow: 0 24px 48px rgba(0,0,0,0.12);
 }
 
+/* Menu */
 .menu-section { padding: 5rem 0; background: var(--cream); }
 .inner { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
 .section-header {
@@ -114,7 +120,7 @@ button { font-family: inherit; cursor: pointer; }
   display: grid; grid-template-columns: 1fr; gap: 1.5rem;
 }
 @media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 1024px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .cards { grid-template-columns: repeat(4, 1fr); } }
 
 .card {
   background: var(--card); border-radius: 1.5rem; overflow: hidden;
@@ -145,23 +151,27 @@ button { font-family: inherit; cursor: pointer; }
 .card-body h3 { font-size: 1.25rem; margin-bottom: 0.25rem; }
 .card-body p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; flex: 1; }
 
-.pack-row {
+.qty-row {
   display: flex; align-items: center; justify-content: space-between;
   margin-top: 1.25rem;
 }
-.pack-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
-.pack-btns { display: flex; align-items: center; gap: 0.375rem; }
-.pack-btn {
-  height: 2.25rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500;
-  border: none; transition: 0.2s;
+.qty-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.qty-pill {
+  display: flex; align-items: center; gap: 0.25rem;
+  background: var(--cream); border-radius: 9999px; padding: 0.25rem;
 }
-.pack-btn.inactive {
-  background: var(--cream); color: var(--fg);
-  border: 1px solid rgba(224,213,204,0.6);
+.qty-btn {
+  width: 2rem; height: 2rem; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  border: none; background: transparent; transition: background 0.2s;
 }
-.pack-btn.inactive:hover { background: var(--bg); }
-.pack-btn.active { background: var(--primary); color: var(--primary-fg); }
+.qty-btn:hover { background: var(--bg); }
+.qty-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.qty-btn.add { background: var(--primary); color: var(--primary-fg); }
+.qty-btn.add:hover { opacity: 0.9; }
+.qty-num { width: 1.5rem; text-align: center; font-weight: 500; font-variant-numeric: tabular-nums; }
 
+/* Order */
 .order-section { padding: 5rem 0; }
 .order-header { text-align: center; margin-bottom: 3rem; }
 .order-header p { color: var(--muted); margin-top: 0.75rem; }
@@ -186,6 +196,10 @@ button { font-family: inherit; cursor: pointer; }
 .summary-list li {
   display: flex; justify-content: space-between; align-items: center;
   gap: 0.75rem; font-size: 0.875rem; padding: 0.25rem 0;
+}
+.size-select {
+  font-size: 0.75rem; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 9999px; padding: 0.25rem 0.75rem; outline: none;
 }
 
 .form-grid {
@@ -213,8 +227,8 @@ button { font-family: inherit; cursor: pointer; }
   box-shadow: 0 8px 24px rgba(107,79,63,0.15); transition: opacity 0.2s;
 }
 .submit-btn:hover { opacity: 0.9; }
-.submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
+/* Contact / Footer */
 .contact {
   padding: 5rem 1.5rem; background: var(--primary); color: var(--primary-fg); text-align: center;
 }
@@ -224,6 +238,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 2rem 1.5rem; text-align: center; font-size: 0.75rem; color: var(--muted);
 }
 
+/* Toast */
 .toast-container {
   position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;
   display: flex; flex-direction: column; gap: 0.5rem;
@@ -244,13 +259,59 @@ button { font-family: inherit; cursor: pointer; }
   from { transform: translateX(0); opacity: 1; }
   to { transform: translateX(120%); opacity: 0; }
 }
+
+/* Payment modal */
+.payment-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.55);
+  display: none; align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.payment-overlay.active { display: flex; }
+.payment-card {
+  background: var(--card); border-radius: 1.5rem;
+  border: 1px solid rgba(224,213,204,0.6);
+  padding: 2rem; max-width: 420px; width: 100%;
+  text-align: center; box-shadow: 0 24px 48px rgba(0,0,0,0.12);
+}
+.payment-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.payment-card p { color: var(--muted); font-size: 0.875rem; margin-bottom: 1.5rem; }
+.payment-card img { width: 14rem; height: 14rem; object-fit: contain; margin: 0 auto 1.5rem; border-radius: 1rem; }
+.payment-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.payment-actions button {
+  flex: 1; min-width: 140px; padding: 0.875rem 1.25rem;
+  border-radius: 9999px; font-weight: 500; font-size: 0.9375rem;
+  border: none; cursor: pointer; font-family: inherit;
+}
+.btn-paid { background: var(--primary); color: var(--primary-fg); }
+.btn-paid:hover { opacity: 0.9; }
+.btn-skip { background: var(--cream); color: var(--fg); border: 1px solid var(--border) !important; }
+.btn-skip:hover { background: var(--bg); }
+
+/* Pack toggle buttons */
+.pack-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 1.25rem;
+}
+.pack-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.pack-btns {
+  display: flex; align-items: center; gap: 0.375rem;
+}
+.pack-btn {
+  height: 2.25rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500;
+  border: 1px solid var(--border); background: var(--cream); color: var(--fg);
+  cursor: pointer; transition: 0.2s; font-family: inherit; padding: 0 0.75rem;
+}
+.pack-btn:hover { background: var(--bg); }
+.pack-btn.on { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
 </style>
 </head>
 <body>
 
-<<header class="header">
+<header class="header">
   <div class="header-inner">
-    <img class="logo" src="https://id-preview--056737ee-d979-4d62-80ca-2a93e3309064.lovable.app/__l5e/assets-v1/3bd1f8b7-93d4-46a2-b15b-8027f859a3c0/logo.jpg" alt="Sweet Hypothesis" onerror="this.style.display='none'">
+    <!-- Replace with your hosted logo URL -->
+    <div class="logo" style="font-family:var(--font-display);font-size:2rem;color:var(--berry);font-style:italic;margin-bottom:0.5rem;">Sweet Hypothesis</div>
     <nav class="nav">
       <a href="#menu">Menu</a><span>·</span>
       <a href="#order">Order</a><span>·</span>
@@ -273,7 +334,7 @@ button { font-family: inherit; cursor: pointer; }
   </div>
   <div class="hero-img-wrap">
     <div class="hero-deco"></div>
-    <img class="hero-img" src="https://id-preview--056737ee-d979-4d62-80ca-2a93e3309064.lovable.app/__l5e/assets-v1/5b358047-0910-4897-bc6c-47e31d68cc2d/hero-cake.png" alt="Cake topped with whipped cream, pistachio, and rose petals">
+    <img class="hero-img" src="/__l5e/assets-v1/5b358047-0910-4897-bc6c-47e31d68cc2d/hero-cake.png" alt="Cake topped with whipped cream, pistachio, and rose petals">
   </div>
 </section>
 
@@ -284,7 +345,7 @@ button { font-family: inherit; cursor: pointer; }
         <div class="section-tag">The menu</div>
         <h2 class="section-title">Fresh from the oven</h2>
       </div>
-      <p class="hint">Select a pack size to add to your order.</p>
+      <p class="hint">Tap + to add to your order. Quantities update below.</p>
     </div>
     <div class="cards" id="menuCards"></div>
   </div>
@@ -295,7 +356,6 @@ button { font-family: inherit; cursor: pointer; }
     <div class="order-header">
       <div class="section-tag">Order form</div>
       <h2 class="section-title">Tell us what you'd love</h2>
-      <p>Submitting sends your order directly to Aarti.</p>
     </div>
 
     <form class="order-form" id="orderForm">
@@ -327,27 +387,49 @@ button { font-family: inherit; cursor: pointer; }
         </div>
       </div>
 
-      <button type="submit" class="submit-btn">Send order to Sweet Hypothesis</button>
+      <button type="submit" class="submit-btn">Continue to payment</button>
     </form>
   </div>
 </section>
 
 <section class="contact" id="contact">
   <div class="inner">
-    <h2 class="section-title" style="color:inherit;margin-bottom:1rem;">Get in touch</h2>
-    <p style="opacity:0.85;max-width:28rem;margin:0 auto;">Have a question? Reach out — We would love to hear from you.</p>
-    <p style="margin-top:1.5rem;"><a href="mailto:artimenon@gmail.com">aartimenon@sweethypothesis.com</a></p>
+    <p style="margin-top:2rem; font-size:0.875rem; opacity:0.7;">
+      Have a question? Reach out — We would love to hear from you!
+      <br>
+      <a href="mailto:aartimenon@sweethypothesis.com" style="color: inherit; text-decoration: underline;">aartimenon@sweethypothesis.com</a>
+    </p>
   </div>
 </section>
 
-<<footer class="footer">
+<footer class="footer">
   © <span id="year"></span> Sweet Hypothesis · Baked with love
 </footer>
 
 <div class="toast-container" id="toastContainer"></div>
 
+<!-- Payment Modal -->
+<div class="payment-overlay" id="paymentOverlay">
+  <div class="payment-card">
+    <p style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--berry);margin-bottom:0.5rem;text-align:center;">Payment</p>
+    <h3>Pay with PayPal</h3>
+    <p>Scan the QR code below to complete your payment, then send your order.</p>
+    <div style="margin-bottom:1.25rem;margin-left:auto;margin-right:auto;text-align:center;">
+      <div style="display:inline-block;background:var(--cream);border:1px solid rgba(224,213,204,0.4);border-radius:1rem;padding:0.75rem 1.25rem;text-align:center;">
+        <p style="font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted);margin:0;">Total due</p>
+        <p id="paymentTotal" style="font-family:var(--font-display);font-size:1.875rem;margin:0;font-variant-numeric:tabular-nums;">$0.00</p>
+      </div>
+    </div>
+    <img src="/__l5e/assets-v1/ca9b4878-4c49-4712-94a3-0ba225f206ef/paypal-qr.png" alt="PayPal QR code">
+    <div class="payment-actions">
+      <button type="button" class="btn-paid" id="btnPaid">I've paid — send my order</button>
+      <button type="button" class="btn-skip" id="btnCancelPay">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <script>
-const ORDER_EMAIL = 'artimenon@gmail.com';
+const ORDER_EMAIL = 'aartimenon@sweethypothesis.com';
 const WEB3FORMS_ACCESS_KEY = 'd82ce80d-35d8-42eb-a36b-e357186dc433';
 
 const MENU = [
@@ -355,38 +437,49 @@ const MENU = [
     id: 'butter-cookies',
     name: 'Butter Cookies',
     description: 'Buttery, melt-in-your-mouth cookies crafted with simple ingredients and a hint of warmth. The perfect companion for your afternoon chai or coffee ritual.',
-    image: 'https://id-preview--056737ee-d979-4d62-80ca-2a93e3309064.lovable.app/__l5e/assets-v1/092773e9-bbf0-4127-9a53-dc6b9b16cd5c/butter-cookies.png',
-    options: [6, 12]
+    image: '/__l5e/assets-v1/092773e9-bbf0-4127-9a53-dc6b9b16cd5c/butter-cookies.png',
   },
   {
     id: 'gulab-jamun-cake',
     name: 'Gulab Jamun Cake',
     description: 'A delicate vanilla cake layered with rich gulab jamun flavors, fragrant cardamom, and silky buttercream. Familiar, nostalgic, and elegantly reimagined.',
-    image: 'https://id-preview--056737ee-d979-4d62-80ca-2a93e3309064.lovable.app/__l5e/assets-v1/b40f3e5f-7638-4069-8723-14bed525c9d1/gulab-jamun-cake-new.png',
-    options: [1, 4, 6, 12]
+    image: '/__l5e/assets-v1/b40f3e5f-7638-4069-8723-14bed525c9d1/gulab-jamun-cake-new.png',
   },
   {
     id: 'chai-cake',
     name: 'Chai Cake',
     description: 'Warm vanilla cake infused with aromatic chai spices and topped with smooth buttercream. Comforting, cozy, and perfectly balanced.',
-    image: 'https://id-preview--056737ee-d979-4d62-80ca-2a93e3309064.lovable.app/__l5e/assets-v1/1aa3f66a-ea8b-47cb-a6ec-5284478ac943/chai-cake-v2.png',
-    options: [1, 4, 6, 12]
-  }
+    image: '/__l5e/assets-v1/1aa3f66a-ea8b-47cb-a6ec-5284478ac943/chai-cake-v2.png',
+  },
 ];
 
 let quantities = {};
+let isSending = false;
+let pendingSubject = '';
+let pendingBody = '';
+
+const PRICES = {
+  'butter-cookies': { 6: 6, 12: 10 },
+  'gulab-jamun-cake': { 1: 7, 4: 24, 6: 36, 12: 55 },
+  'chai-cake': { 1: 7, 4: 24, 6: 36, 12: 55 },
+};
+
+function priceFor(id, qty) { return PRICES[id]?.[qty] ?? 0; }
+function fmt(n) { return '$' + n.toFixed(2); }
+
+function subtotal() {
+  return Object.entries(quantities).reduce((sum, [id, qty]) => sum + priceFor(id, qty), 0);
+}
 
 function icon(name) {
   const icons = {
-    cookie: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5 5 10 10 0 0 0 10-10"/></svg>',
-    minus: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>',
-    plus: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>'
+    cookie: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5 5 10 10 0 0 0 10-10"/></svg>',
   };
   return icons[name] || '';
 }
 
-function setPack(itemId, value) {
-  quantities[itemId] = quantities[itemId] === value ? 0 : value;
+function setPack(id, value) {
+  quantities[id] = quantities[id] === value ? 0 : value;
   renderMenu();
   renderSummary();
 }
@@ -395,17 +488,16 @@ function renderMenu() {
   const container = document.getElementById('menuCards');
   container.innerHTML = MENU.map(item => {
     const qty = quantities[item.id] || 0;
+    const options = item.id === 'butter-cookies' ? [6, 12] : [1, 4, 6, 12];
     const imgHtml = item.image
       ? `<img src="${item.image}" alt="${item.name}" loading="lazy">`
-      : `<div class="placeholder">${icon('cookie')}<<span>Image coming soon</span></div>`;
-    const isCookie = item.id === 'butter-cookies';
-    const btnPadding = isCookie ? '0.75rem 1rem' : '0.75rem 0.625rem';
-    const btnGap = isCookie ? '0.5rem' : '0.375rem';
-    const buttonsHtml = item.options.map(n => {
-      const active = qty === n;
+      : `<div class="placeholder">${icon('cookie')}<span>Image coming soon</span></div>`;
+    const buttons = options.map(n => {
       const label = n === 12 ? 'Dozen' : `${n}`;
-      return `<button type="button" class="pack-btn ${active ? 'active' : 'inactive'}" style="padding:${btnPadding}" onclick="setPack('${item.id}', ${n})" aria-label="${n === 12 ? 'Dozen' : n + ' count'} ${item.name}">${label}</button>`;
+      const on = qty === n ? 'on' : '';
+      return `<button type="button" class="pack-btn ${on}" onclick="setPack('${item.id}', ${n})" aria-label="${label} ${item.name}"><span>${label}</span><span style="font-size:10px;opacity:0.75">${fmt(priceFor(item.id, n))}</span></button>`;
     }).join('');
+    const selectedPrice = qty > 0 ? `<span style="font-size:0.875rem;font-weight:500;color:var(--berry);font-variant-numeric:tabular-nums">${fmt(priceFor(item.id, qty))}</span>` : '';
     return `
       <article class="card">
         <div class="card-img">${imgHtml}</div>
@@ -414,8 +506,9 @@ function renderMenu() {
           <p>${item.description}</p>
           <div class="pack-row">
             <span class="pack-label">Pack size</span>
-            <div class="pack-btns" style="gap:${btnGap}">${buttonsHtml}</div>
+            ${selectedPrice}
           </div>
+          <div class="pack-btns">${buttons}</div>
         </div>
       </article>
     `;
@@ -435,10 +528,18 @@ function renderSummary() {
   }
 
   const items = MENU.filter(m => (quantities[m.id] || 0) > 0).map(m => {
-    return `<li><span>${m.name}</span><span style="font-weight:500;font-variant-numeric:tabular-nums">${quantities[m.id]} count</span></li>`;
+    const qty = quantities[m.id];
+    return `<li><span>${m.name} <span style="color:var(--muted)">× ${qty}</span></span><span style="font-weight:500;font-variant-numeric:tabular-nums">${fmt(priceFor(m.id, qty))}</span></li>`;
   }).join('');
 
-  summaryEl.innerHTML = `<div class="summary-title">Your order (${total} ${total === 1 ? 'item' : 'items'})</div><ul class="summary-list">${items}</ul>`;
+  summaryEl.innerHTML = `
+    <div class="summary-title">Your order (${total} ${total === 1 ? 'item' : 'items'})</div>
+    <ul class="summary-list">${items}</ul>
+    <div style="margin-top:1rem;padding-top:0.75rem;border-top:1px solid rgba(224,213,204,0.4);display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:0.875rem;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;">Subtotal</span>
+      <span style="font-family:var(--font-display);font-size:1.25rem;font-variant-numeric:tabular-nums;">${fmt(subtotal())}</span>
+    </div>
+  `;
 }
 
 function toast(message, type = 'ok') {
@@ -450,45 +551,38 @@ function toast(message, type = 'ok') {
   setTimeout(() => el.remove(), 3000);
 }
 
-document.getElementById('orderForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const total = Object.values(quantities).reduce((a, b) => a + b, 0);
-  if (total === 0) { toast('Please add at least one item to your order.', 'err'); return; }
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  if (!name || !email || !phone) { toast('Please fill in your name, email, and phone.', 'err'); return; }
+function openPayment(subject, body) {
+  pendingSubject = subject;
+  pendingBody = body;
+  document.getElementById('paymentTotal').textContent = fmt(subtotal());
+  document.getElementById('paymentOverlay').classList.add('active');
+}
 
-  const lines = MENU.filter(m => (quantities[m.id] || 0) > 0).map(m => {
-    return `  • ${m.name} — ${quantities[m.id]} count`;
-  });
-  const body = [
-    `New order from ${name}`, '', 'Items:', ...lines, '',
-    `Name:   ${name}`,
-    `Email:  ${email}`,
-    `Phone:  ${phone}`,
-    `Pickup: ${document.getElementById('date').value || 'Not specified'}`,
-    `Notes:  ${document.getElementById('notes').value || '—'}`,
-  ].join('\n');
+function closePayment() {
+  document.getElementById('paymentOverlay').classList.remove('active');
+}
 
-  const subject = 'Sweet Hypothesis order — ' + name;
-  const btn = document.querySelector('#orderForm .submit-btn');
+async function sendOrder() {
+  if (isSending) return;
+  isSending = true;
+  const btn = document.getElementById('btnPaid');
   const originalLabel = btn ? btn.textContent : '';
-  if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+  if (btn) btn.textContent = 'Sending…';
+
   try {
     const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
         access_key: WEB3FORMS_ACCESS_KEY,
-        subject: subject,
+        subject: pendingSubject,
         from_name: 'Sweet Hypothesis Orders',
         to: ORDER_EMAIL,
-        replyto: email,
-        name: name,
-        email: email,
-        phone: phone,
-        message: body,
+        replyto: document.getElementById('email').value.trim(),
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        message: pendingBody,
       }),
     });
     const json = await res.json().catch(() => ({}));
@@ -500,16 +594,53 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
       document.getElementById('phone').value = '';
       document.getElementById('date').value = '';
       document.getElementById('notes').value = '';
+      closePayment();
     } else {
       toast('Could not send order. Please try again.', 'err');
-      showOrderModal(subject, body);
+      showOrderModal(pendingSubject, pendingBody);
     }
   } catch (e) {
     toast('Network error. Showing order details to copy.', 'err');
-    showOrderModal(subject, body);
+    showOrderModal(pendingSubject, pendingBody);
   } finally {
-    if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
+    isSending = false;
+    if (btn) btn.textContent = originalLabel;
   }
+}
+
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const total = Object.values(quantities).reduce((a, b) => a + b, 0);
+  if (total === 0) { toast('Please add at least one item to your order.', 'err'); return; }
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  if (!name || !email || !phone) { toast('Please fill in your name, email, and phone.', 'err'); return; }
+
+  const lines = MENU.filter(m => (quantities[m.id] || 0) > 0).map(m => {
+    const qty = quantities[m.id];
+    return `  \u2022 ${m.name} \u2014 ${qty} count \u2014 ${fmt(priceFor(m.id, qty))}`;
+  });
+  const orderTotal = subtotal();
+  const body = [
+    `New order from ${name}`, '', 'Items:', ...lines, '',
+    `Subtotal: ${fmt(orderTotal)}`,
+    '',
+    `Name:   ${name}`,
+    `Email:  ${email}`,
+    `Phone:  ${phone}`,
+    `Pickup: ${document.getElementById('date').value || 'Not specified'}`,
+    `Notes:  ${document.getElementById('notes').value || '\u2014'}`,
+  ].join('\n');
+
+  const subject = 'Sweet Hypothesis order \u2014 ' + name;
+  openPayment(subject, body);
+});
+
+document.getElementById('btnPaid').addEventListener('click', sendOrder);
+document.getElementById('btnCancelPay').addEventListener('click', closePayment);
+document.getElementById('paymentOverlay').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('paymentOverlay')) closePayment();
 });
 
 function showOrderModal(subject, body) {
