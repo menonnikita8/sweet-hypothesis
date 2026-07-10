@@ -1019,11 +1019,14 @@ document.getElementById('copyFallbackBtn').addEventListener('click', async () =>
   }
 });
 
-// Pickup date minimum = today + 2 days
+// Pickup date minimum = today + 3 days (today + next 2 days greyed out)
 const dateInput = document.getElementById('date');
 const minDate = new Date();
-minDate.setDate(minDate.getDate() + 2);
-dateInput.min = minDate.toISOString().split('T')[0];
+minDate.setDate(minDate.getDate() + 3);
+const year = minDate.getFullYear();
+const month = String(minDate.getMonth() + 1).padStart(2, '0');
+const day = String(minDate.getDate()).padStart(2, '0');
+dateInput.min = `${year}-${month}-${day}`;
 
 document.getElementById('year').textContent = new Date().getFullYear();
 renderMenu();
