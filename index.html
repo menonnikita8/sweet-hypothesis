@@ -424,7 +424,7 @@ body.about-mode .footer { display: none; }
 
 <header class="header">
   <div class="header-inner">
-    <a href="#top"><img class="logo" src="https://id-preview--056737ee-d979-4d62-80ca-2a93e3309064.lovable.app/__l5e/assets-v1/24b6d39f-89ad-47c8-a9a2-7e87791f30b8/img0.png" alt="Sweet Hypothesis — Artisan Desserts, Curiously Crafted" /></a>
+    <a href="#top"><img class="logo" src="https://id-preview--056737ee-d979-4d62-80ca-2a93e3309064.lovable.app/__l5e/assets-v1/c98df864-fe1b-4dfd-8e8e-ee0c2178c6f8/logo-new.png" alt="Sweet Hypothesis — Artisan Desserts, Curiously Crafted" /></a>
     <nav class="nav">
       <a href="#menu" data-nav="home">Menu</a><span>·</span>
       <a href="#order" data-nav="home">Order</a><span>·</span>
@@ -493,7 +493,7 @@ body.about-mode .footer { display: none; }
           <input type="tel" id="phone" placeholder="(555) 123-4567" required>
         </div>
         <div class="field">
-          <label>Pickup date: Our desserts are made to order so please allow atleast 2 days for pick up or delivery</label>
+          <label>Pickup date</label>
           <input type="date" id="date">
         </div>
         <div class="field full">
@@ -522,7 +522,7 @@ body.about-mode .footer { display: none; }
     <p style="font-size:0.875rem; opacity:0.7;">
       Have a question? Reach out — We would love to hear from you!
       <br>
-      <a href="mailto:aartimenon@sweethypothesis.com">aartimenon@sweethypothesis.com</a>
+      <a href="mailto:info@sweethypothesis.com">info@sweethypothesis.com</a>
     </p>
   </div>
 </section>
@@ -630,7 +630,7 @@ body.about-mode .footer { display: none; }
 </div>
 
 <script>
-const ORDER_EMAIL = 'aartimenon@sweethypothesis.com';
+const ORDER_EMAIL = 'info@sweethypothesis.com';
 const WEB3FORMS_ACCESS_KEY = 'd82ce80d-35d8-42eb-a36b-e357186dc433';
 const VENMO_URL = 'https://venmo.com/code?user_id=4632222497769114466&created=1783378414.644302&printed=1';
 
@@ -667,8 +667,8 @@ let fallbackText = '';
 
 const PRICES = {
   'butter-cookies': { 6: 6, 12: 10 },
-  'gulab-jamun-cake': { 1: 7, 4: 24, 6: 36, 12: 55 },
-  'chai-cake': { 1: 7, 4: 24, 6: 36, 12: 55 },
+  'gulab-jamun-cake': { 1: 7, 4: 24, 6: 36, 12: 60 },
+  'chai-cake': { 1: 7, 4: 24, 6: 36, 12: 60 },
 };
 
 function priceFor(id, qty) { return PRICES[id]?.[qty] ?? 0; }
@@ -922,7 +922,7 @@ async function sendOrder() {
           `Payment via: ${paymentMethod === 'venmo' ? 'Venmo' : 'Zelle'}`,
           `Pickup date: ${document.getElementById('date').value || 'To be confirmed'}`,
           '',
-          'If you have any questions, reply to this email or reach out to aartimenon@sweethypothesis.com.',
+          'If you have any questions, reply to this email or reach out to info@sweethypothesis.com.',
           '',
           'Baked with love,',
           'Sweet Hypothesis',
